@@ -1,4 +1,5 @@
 # ntz-java
+
 ntz is a commandline notes taker
 
 ## What is ntz?
@@ -37,7 +38,8 @@ using ntz' interface.
 
 ## What's it look like? - Usage
 
-### Showing notes.
+### Showing notes
+
 Typing `ntz` with no arguments should display all your notes.
 It should number them so you can perform forget/change on them.
 
@@ -147,7 +149,6 @@ Things you need to think about as you're doing each phase
 * How do you *carefully* break that line into pieces you can handle.
 * How do you handle the "command" ( -r, -c, -f, -e) and it's arguments?
   * How do you design a method in the Notez class to handle the command.
-
 
 ## Database "BackEnd"
 
