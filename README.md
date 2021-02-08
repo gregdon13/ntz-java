@@ -173,6 +173,6 @@ Need real instructions here.
 3. Place it somewhere that's in your shell's $PATH. Either /bin, /usr/bin or ~/bin
 4. Add this line to your .bashrc or .zshrc in the alias section (which is probably in ~/) -> alias ntz='ntz.sh'
 
-
 That should do it. To make ntx executable in a shell, just `chmod +x ntz` and it'll probably do the trick.
 
+-kristofer
