@@ -31,8 +31,7 @@ Other command line note tools out there are...clunky.
 They require interacting with vim or nano, and manual formatting. 
 Yuck.
 
-ntz takes command line arguments and builds tidy todo/remember lists using the inherent 
-neatness of Java. 
+ntz takes command line arguments and builds tidy todo/remember lists using Java. 
 The result is a notes system that is easily manipulated with the command line 
 using ntz' interface.
 
@@ -50,7 +49,7 @@ ntz
 
 ### adding/forgetting and changing notes
 
-ntz has four commandline options.
+`ntz` has four commandline options.
 
 * [-r]emember
 * [-c] creates and/or appends to a category
