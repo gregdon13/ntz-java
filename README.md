@@ -3,7 +3,12 @@ ntz is a commandline notes taker
 
 ## What is ntz?
 
-A command line note tool that doesn't involve terminal based editors, but does involve Java.
+*How do you "persist" data from one running of a program to another??*
+
+This lab shows a simple "store it in a file" solution. 
+It also encourages you to try to make this useful to you so that you might end up using your own code as a tool to keep yourself organized(!).
+
+NTZ is a command line note tool that doesn't involve terminal based editors, but does involve Java.
 You've been provided with a very simple file backed data store called `FileMap`.
 It acts like a Key/Value database, which can be stored in a file.
 It is a subclass of `HashMap<String,NoteList>` and all it does is `load()` and `save()` a itself to
@@ -89,7 +94,7 @@ ntz
 1) "hello!"
 2) "second note"
 
-ntz -r 1
+ntz -f 1
 
 ntz
 1) "second note"
@@ -104,16 +109,52 @@ ntz
 1) "hello!"
 2) "second note"
 
-ntz -r 2 "replaced second note"
+ntz -e 2 "replaced second note"
 
 ntz
 1) "hello!"
 2) "replaced second note"
 ```
 
-## BackEnd
+## How to do this Lab
 
-Yes, the backend (the FileMap) is a very crude database. Feel free to use another one.
+You need to be thinking in phases.
+Phase 1, and then 2 and then 3 and so on.
+
+Phases
+
+* Get the bare ntz command working.
+  * You should put a couple of notes into the general category (in code)
+  * built a method to print out the FileMap
+* Get the simple remember command working.
+  * pull the data from the command line
+  * call the method to add the note to the category
+* Build the category (-c) command functionality
+* Add delete note capability
+* Finish with the "edit" capability
+
+Each phase needs to be clear piece of work.
+You have to make the code in the phase work.
+It's probably by adding a method to the Notez class.
+Then you have to do a git commit and push.
+You must decide on a few tests and write them.
+Then you have to do a git commit and push.
+Once you have completed a phase you move onto the next one.
+At the end of each phase the program must work well.
+
+Things you need to think about as you're doing each phase
+
+* How do you figure out what was passed to the program's input on the command line?
+* How do you *carefully* break that line into pieces you can handle.
+* How do you handle the "command" ( -r, -c, -f, -e) and it's arguments?
+  * How do you design a method in the Notez class to handle the command.
+
+
+## Database "BackEnd"
+
+Yes, the backend (the FileMap) is a very crude database. 
+You might want to get ntz running and then replace the database with something else.
+Feel free to use another one.
 These are all suggestions:
 
 * SQLite3
