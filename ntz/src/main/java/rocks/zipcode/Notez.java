@@ -44,11 +44,19 @@ public final class Notez {
         if (argv.length == 0) { // there are no commandline arguments
             //just print the contents of the filemap.
             ntzEngine.printResults();
+        } else {
+            if (argv[0].equals("-r")) {
+                ntzEngine.addToCategory("General", argv);
+            } // this should give you an idea about how to TEST the Notez engine
+              // without having to spend lots of time messing with command line arguments.
         }
         /*
          * what other method calls do you need here to implement the other commands??
          */
 
+    }
+
+    private void addToCategory(String string, String[] argv) {
     }
 
     private void saveDatabase() {
@@ -72,5 +80,5 @@ public final class Notez {
     /*
      * Put all your additional methods that implement commands like forget here...
      */
-    
+
 }
