@@ -1,6 +1,6 @@
 # ntz-java
 
-ntz is a commandline notes taker
+ntz is a commandline notes taker. use HashMap to store all the things.
 
 ## What is ntz?
 
@@ -12,20 +12,22 @@ It also encourages you to try to make this useful to you so that you might end u
 NTZ is a command line note tool that doesn't involve terminal based editors, but does involve Java.
 You've been provided with a very simple file backed data store called `FileMap`.
 It acts like a Key/Value database, which can be stored in a file.
-It is a subclass of `HashMap<String,NoteList>` and all it does is `load()` and `save()` a itself to
+It has an internal `HashMap<String,NoteList>` and all it does is `load()` and `save()` itself to
 a file named "ntz.db".
 It's purpose is to show you a simple way to persist your Notez' data into a file.
+See more about the ObjectInputStream/ObjectOutputStream classes.
 
 A `NoteList` is merely an ArrayList<String>. 
-Each Item in the FileMap should use the key String for the Category name, and then append a notes to the NoteList held as the map's value.
+Each Item in the FileMap's hashmap should use the key String for the Category name, and then append a notes to the NoteList held as the map's value.
 
 This lab requires you to figure out how to take things from the command line and manipulate a `database` to
 store text notes.
+You should work on it over the course of the week.
 
 ## Why?
 
-Keeping track of a small list of things to remember or stuff that needs doing is a pain. 
-Remembering its location, manually accessing it, formatting it and all of the clicking that entails, 
+Keeping track of a small list of things to remember or stuff that needs doing is a pain.
+Remembering its location, manually accessing it, formatting it and all of the clicking that entails,
 is something many find unpleasant.
 
 Other command line note tools out there are...clunky. 
@@ -152,7 +154,10 @@ Things you need to think about as you're doing each phase
 
 ## Database "BackEnd"
 
-Yes, the backend (the FileMap) is a very crude database. 
+Yes, the backend (the FileMap) is a very crude database.
+It is a HashMap<String, Notelist> and a NoteList is merely an ArrayList<String>.
+FileMap wraps (forwards) all the Map required methods to its internal HashMap.
+FileMap then implements two methods that save/load the hashmap to a file and back.
 You might want to get ntz running and then replace the database with something else.
 Feel free to use another one.
 These are all suggestions:
