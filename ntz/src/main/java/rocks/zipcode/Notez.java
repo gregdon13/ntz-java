@@ -21,16 +21,16 @@ public final class Notez {
             System.err.println("]");
         }
 
-        FileMap hashmap = new FileMap();
-        hashmap.load();
-        hashmap.put("General", new NoteList("The Very first Note"));
-        hashmap.put("note2", new NoteList("A secret note"));
-        hashmap.put("category3", new NoteList("Did you buy bread AND eggs?"));
-        hashmap.put("anotherNote", new NoteList("Hello from ZipCode!"));
-        hashmap.save();
+        FileMap filemap = new FileMap();
+        filemap.load();
+        filemap.put("General", new NoteList("The Very first Note"));
+        filemap.put("note2", new NoteList("A secret second note"));
+        filemap.put("category3", new NoteList("Did you buy bread AND eggs?"));
+        filemap.put("anotherNote", new NoteList("Hello from ZipCode!"));
+        filemap.save();
 
         if (argv.length == 0) {
-            System.out.println(hashmap);
+            System.out.println(filemap.toString());
         }
 
     }
