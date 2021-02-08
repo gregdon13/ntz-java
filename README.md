@@ -167,6 +167,7 @@ These are all suggestions:
 
 This is waving hands.
 Need real instructions here.
+The issues, which make this a little brittle or difficult, is often the relative paths within the shell script.
 
 1. Look at the `ntz.sh` file.
 2. It might work for you.
