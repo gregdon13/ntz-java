@@ -15,4 +15,9 @@ class NotezTest {
     void testApp() {
         assertEquals(1, 1);
     }
+
+    @Test
+    public void rememberTest() {
+
+    }
 }

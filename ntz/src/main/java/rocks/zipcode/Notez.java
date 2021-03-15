@@ -1,5 +1,7 @@
 package rocks.zipcode;
 
+import com.sun.xml.internal.ws.api.pipe.Engine;
+
 /**
  * ntz main command.
  */
@@ -12,7 +14,7 @@ public final class Notez {
     }
     /**
      * Says hello to the world.
-     * 
+     *
      * @param args The arguments of the program.
      */
     public static void main(String argv[]) {
@@ -32,12 +34,12 @@ public final class Notez {
 
         /*
          * You will spend a lot of time right here.
-         * 
+         *
          * instead of loadDemoEntries, you will implement a series
          * of method calls that manipulate the Notez engine.
          * See the first one:
          */
-        ntzEngine.loadDemoEntries();
+        //ntzEngine.loadDemoEntries();
 
         ntzEngine.saveDatabase();
 
@@ -47,7 +49,10 @@ public final class Notez {
         } else {
             if (argv[0].equals("-r")) {
                 ntzEngine.addToCategory("General", argv);
-            } // this should give you an idea about how to TEST the Notez engine
+            } else if (argv[0].equals("-c")) {
+
+            }
+            // this should give you an idea about how to TEST the Notez engine
               // without having to spend lots of time messing with command line arguments.
         }
         /*
