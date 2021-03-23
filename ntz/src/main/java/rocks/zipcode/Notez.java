@@ -1,13 +1,13 @@
 package rocks.zipcode;
 
-import com.sun.xml.internal.ws.api.pipe.Engine;
+import java.util.Scanner;
 
 /**
  * ntz main command.
  */
 public final class Notez {
 
-    private FileMap filemap;
+    public FileMap filemap;
 
     public Notez() {
         this.filemap  = new FileMap();
@@ -15,7 +15,7 @@ public final class Notez {
     /**
      * Says hello to the world.
      *
-     * @param args The arguments of the program.
+     * param args The arguments of the program.
      */
     public static void main(String argv[]) {
         boolean _debug = true;
@@ -39,18 +39,32 @@ public final class Notez {
          * of method calls that manipulate the Notez engine.
          * See the first one:
          */
+
+
+
         //ntzEngine.loadDemoEntries();
 
-        ntzEngine.saveDatabase();
+
 
         if (argv.length == 0) { // there are no commandline arguments
             //just print the contents of the filemap.
             ntzEngine.printResults();
         } else {
             if (argv[0].equals("-r")) {
-                ntzEngine.addToCategory("General", argv);
+                String noteToAdd = ntzEngine.argvToString(argv);
+                ntzEngine.addToCategory("General", noteToAdd);
             } else if (argv[0].equals("-c")) {
-
+                String noteToAdd = ntzEngine.argvToString(argv);
+                ntzEngine.addToCategory(argv[1], noteToAdd);
+            } else if (argv[0].equals("-f")) {
+                ntzEngine.removeNote(argv[1], Integer.parseInt(argv[2]));
+            } else if (argv[0].equals("-e")) {
+                String noteToAdd = "";
+                for (int i = 3; i < argv.length-1; i++) {
+                    noteToAdd += argv[i] + " ";
+                }
+                noteToAdd += argv[argv.length-1];
+                ntzEngine.editNote(argv[1], Integer.parseInt(argv[2]), noteToAdd);
             }
             // this should give you an idea about how to TEST the Notez engine
               // without having to spend lots of time messing with command line arguments.
@@ -59,9 +73,34 @@ public final class Notez {
          * what other method calls do you need here to implement the other commands??
          */
 
+        ntzEngine.saveDatabase();
     }
 
-    private void addToCategory(String string, String[] argv) {
+    public String argvToString(String[] argv) {
+        String noteToAdd = "";
+        for (int i = 2; i < argv.length-1; i++) {
+            noteToAdd += argv[i] + " ";
+        }
+        noteToAdd += argv[argv.length-1];
+        return noteToAdd;
+    }
+
+    public void addToCategory(String key, String note) {
+        if (filemap.containsKey(key)) {
+            filemap.get(key).add(note);
+        } else {
+            //catches if key doesn't exist
+            NoteList noteList = new NoteList(note);
+            filemap.put(key, noteList);
+        }
+    }
+
+    public void removeNote(String category, int removeNum) {
+        filemap.get(category).remove(removeNum-1);
+    }
+
+    public void editNote(String category, int editIndex, String newNote) {
+        filemap.get(category).set(editIndex-1, newNote);
     }
 
     private void saveDatabase() {
